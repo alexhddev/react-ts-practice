@@ -1,5 +1,5 @@
-import { SyntheticEvent, useState } from "react";
-import LoginService from "../services/LoginService";
+import { SyntheticEvent, useState } from 'react';
+import LoginService from '../services/LoginService';
 
 type LoginProps = {
   loginService: LoginService;
@@ -36,21 +36,21 @@ function LoginComponent({ loginService, setToken }: LoginProps) {
 
 
   return (
-    <div role="main">
+    <div role='main'>
       <h2>Please login</h2>
       <form onSubmit={(e) => handleSubmit(e)}>
         <label>User name</label>
-        <input
+        <input data-testid='input'
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
         /><br/>
         <label>Password</label>
-        <input
+        <input data-testid='input'
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          type="password"
+          type='password'
         /><br/>
-        <input type="submit" value="Login" />
+        <input data-testid='input' type='submit' value='Login' />
       </form><br/>
       {renderLoginResult()}
     </div>
