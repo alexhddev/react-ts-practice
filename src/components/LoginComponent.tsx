@@ -36,7 +36,7 @@ function LoginComponent({ loginService, setToken }: LoginProps) {
 
 
   return (
-    <div>
+    <div role="main">
       <h2>Please login</h2>
       <form onSubmit={(e) => handleSubmit(e)}>
         <label>User name</label>
