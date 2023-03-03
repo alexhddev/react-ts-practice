@@ -1,12 +1,17 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App2 from './components/App2';
+import LoginComponent from './components/LoginComponent';
+import LoginService from './services/LoginService';
+
+const loginService = new LoginService();
+const setToken = (token: string)=>{
+  console.log(`received token from login service: ${token}`)
+}
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
 ///  <React.StrictMode> // causes double rendering calls!
-    <App2 />
+    <LoginComponent loginService={loginService} setToken={setToken}/>
 //  </React.StrictMode>
 );

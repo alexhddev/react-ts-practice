@@ -5,7 +5,7 @@ type ChildProps = {
 };
 
 function ChildCounter(props: ChildProps) {
-  const [childCounter, setChildCounter] = useState(0);
+  const [childCounter, setChildCounter] = useState<number>(0);
   function handleClickIncrement() {
     setChildCounter(childCounter + 1);
   }
@@ -20,7 +20,7 @@ function ChildCounter(props: ChildProps) {
 }
 
 function ParentCounter() {
-  const [parentCounter, setParentCounter] = useState(0);
+  const [parentCounter, setParentCounter] = useState<number>(0);
   function handleClickIncrement() {
     setParentCounter(parentCounter + 1);
   }
