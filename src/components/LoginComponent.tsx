@@ -30,7 +30,7 @@ function LoginComponent({ loginService, setToken }: LoginProps) {
 
   function renderLoginResult(){
     if (loginResult) {
-      return <label>{loginResult}</label>
+      return <label data-testid='resultLabel'>{loginResult}</label>
     }
   }
 
