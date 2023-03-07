@@ -56,25 +56,24 @@ describe("LoginComponent test suite", () => {
   });
 
   fit("passes credentials correctly", async () => {
-    const result = Promise.resolve('1234');
+    const result = Promise.resolve("1234");
     loginServiceMock.login.mockReturnValueOnce(result);
     const inputs = await screen.findAllByTestId("input");
     const userNameInput = inputs[0];
     const passwordInput = inputs[1];
     const loginButton = inputs[2];
 
-    //act(()=>{
-      fireEvent.change(userNameInput, { target: { value: "someUser" } });
-      fireEvent.change(passwordInput, { target: { value: "somePassword" } });
-      fireEvent.click(loginButton);
-   // })
+    fireEvent.change(userNameInput, { target: { value: "someUser" } });
+    fireEvent.change(passwordInput, { target: { value: "somePassword" } });
+    fireEvent.click(loginButton);
 
+    await waitFor(() => {
+      expect(loginServiceMock.login).toBeCalledWith("someUser", "somePassword");
+    });
 
-    // prevents Warning: An update to LoginComponent inside a test was not wrapped in act(...).
-     await waitFor(() => {
-       expect(loginServiceMock.login).toBeCalledWith("someUser", "somePassword");
-     });
-     await result;
+    await result;
+    const resultLabel = await screen.findByTestId("resultLabel");
+    expect(resultLabel.textContent).toBe("successful login");
   });
 
   it("passes credentials correctly with user", async () => {
